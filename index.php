@@ -41,8 +41,8 @@ include( 'admin/includes/functions.php' );
 
     <div>
 
-      <h2><?php echo $record['title']; ?></h2>
-      <?php echo $record['content']; ?>
+      <h2><?php echo $record['name']; ?></h2>
+      <?php echo $record['description']; ?>
 
       <?php if($record['photo']): ?>
 

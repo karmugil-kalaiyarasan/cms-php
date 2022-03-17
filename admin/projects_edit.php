@@ -16,18 +16,18 @@ if( !isset( $_GET['id'] ) )
   
 }
 
-if( isset( $_POST['title'] ) )
+if( isset( $_POST['name'] ) )
 {
   
-  if( $_POST['title'] and $_POST['content'] )
+  if( $_POST['name'] and $_POST['description'] )
   {
     
     $query = 'UPDATE projects SET
-      title = "'.mysqli_real_escape_string( $connect, $_POST['title'] ).'",
-      content = "'.mysqli_real_escape_string( $connect, $_POST['content'] ).'",
-      date = "'.mysqli_real_escape_string( $connect, $_POST['date'] ).'",
-      type = "'.mysqli_real_escape_string( $connect, $_POST['type'] ).'",
-      url = "'.mysqli_real_escape_string( $connect, $_POST['url'] ).'"
+      name = "'.mysqli_real_escape_string( $connect, $_POST['name'] ).'",
+      description = "'.mysqli_real_escape_string( $connect, $_POST['description'] ).'",
+      githuburl = "'.mysqli_real_escape_string( $connect, $_POST['githuburl'] ).'",
+      hostingurl = "'.mysqli_real_escape_string( $connect, $_POST['hostingurl'] ).'"
+
       WHERE id = '.$_GET['id'].'
       LIMIT 1';
     mysqli_query( $connect, $query );
@@ -69,18 +69,18 @@ if( isset( $_GET['id'] ) )
 
 <form method="post">
   
-  <label for="title">Title:</label>
-  <input type="text" name="title" id="title" value="<?php echo htmlentities( $record['title'] ); ?>">
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name" value="<?php echo htmlentities( $record['name'] ); ?>">
     
   <br>
   
-  <label for="content">Content:</label>
-  <textarea type="text" name="content" id="content" rows="5"><?php echo htmlentities( $record['content'] ); ?></textarea>
+  <label for="description">Description:</label>
+  <textarea type="text" name="description" id="description" rows="5"><?php echo htmlentities( $record['description'] ); ?></textarea>
   
   <script>
 
   ClassicEditor
-    .create( document.querySelector( '#content' ) )
+    .create( document.querySelector( '#description' ) )
     .then( editor => {
         console.log( editor );
     } )
@@ -92,32 +92,16 @@ if( isset( $_GET['id'] ) )
   
   <br>
   
-  <label for="url">URL:</label>
-  <input type="text" name="url" id="url" value="<?php echo htmlentities( $record['url'] ); ?>">
-    
+  <label for="githuburl">Github URL:</label>
+  <input type="text" name="githuburl" id="githuburl" value="<?php echo htmlentities( $record['githuburl'] ); ?>">
+        
+  <br>
+
   <br>
   
-  <label for="date">Date:</label>
-  <input type="date" name="date" id="date" value="<?php echo htmlentities( $record['date'] ); ?>">
-    
-  <br>
-  
-  <label for="type">Type:</label>
-  <?php
-  
-  $values = array( 'Website', 'Graphic Design' );
-  
-  echo '<select name="type" id="type">';
-  foreach( $values as $key => $value )
-  {
-    echo '<option value="'.$value.'"';
-    if( $value == $record['type'] ) echo ' selected="selected"';
-    echo '>'.$value.'</option>';
-  }
-  echo '</select>';
-  
-  ?>
-  
+  <label for="hostingurl">Hosting URL:</label>
+  <input type="text" name="hostingurl" id="hostingurl" value="<?php echo htmlentities( $record['hostingurl'] ); ?>">
+        
   <br>
   
   <input type="submit" value="Edit Project">

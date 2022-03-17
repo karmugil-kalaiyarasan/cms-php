@@ -8,28 +8,26 @@ secure();
 
 include( 'includes/header.php' );
 
-if( isset( $_POST['title'] ) )
+if( isset( $_POST['name'] ) )
 {
   
-  if( $_POST['title'] and $_POST['content'] )
+  if( $_POST['name'] and $_POST['description'] )
   {
     
     $query = 'INSERT INTO projects (
-        title,
-        content,
-        date,
-        type,
-        url
+        name,
+        description,
+        githuburl,
+        hostingurl
       ) VALUES (
-         "'.mysqli_real_escape_string( $connect, $_POST['title'] ).'",
-         "'.mysqli_real_escape_string( $connect, $_POST['content'] ).'",
-         "'.mysqli_real_escape_string( $connect, $_POST['date'] ).'",
-         "'.mysqli_real_escape_string( $connect, $_POST['type'] ).'",
-         "'.mysqli_real_escape_string( $connect, $_POST['url'] ).'"
+         "'.mysqli_real_escape_string( $connect, $_POST['name'] ).'",
+         "'.mysqli_real_escape_string( $connect, $_POST['description'] ).'",
+         "'.mysqli_real_escape_string( $connect, $_POST['githuburl'] ).'",
+         "'.mysqli_real_escape_string( $connect, $_POST['hostingurl'] ).'"
       )';
     mysqli_query( $connect, $query );
     
-    set_message( 'Project has been added' );
+    set_message( 'Project has been added successfully' );
     
   }
   
@@ -44,18 +42,18 @@ if( isset( $_POST['title'] ) )
 
 <form method="post">
   
-  <label for="title">Title:</label>
-  <input type="text" name="title" id="title">
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name">
     
   <br>
   
-  <label for="content">Content:</label>
-  <textarea type="text" name="content" id="content" rows="10"></textarea>
+  <label for="description">Description:</label>
+  <textarea type="text" name="description" id="description" rows="10"></textarea>
       
   <script>
 
   ClassicEditor
-    .create( document.querySelector( '#content' ) )
+    .create( document.querySelector( '#description' ) )
     .then( editor => {
         console.log( editor );
     } )
@@ -67,30 +65,15 @@ if( isset( $_POST['title'] ) )
   
   <br>
   
-  <label for="url">URL:</label>
-  <input type="text" name="url" id="url">
+  <label for="githuburl">Github URL:</label>
+  <input type="text" name="githuburl" id="githuburl">
   
   <br>
-  
-  <label for="date">Date:</label>
-  <input type="date" name="date" id="date">
-  
+
   <br>
   
-  <label for="type">Type:</label>
-  <?php
-  
-  $values = array( 'Website', 'Graphic Design' );
-  
-  echo '<select name="type" id="type">';
-  foreach( $values as $key => $value )
-  {
-    echo '<option value="'.$value.'"';
-    echo '>'.$value.'</option>';
-  }
-  echo '</select>';
-  
-  ?>
+  <label for="hostingurl">Hosting URL:</label>
+  <input type="text" name="hostingurl" id="hostingurl">
   
   <br>
   
