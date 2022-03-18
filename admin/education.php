@@ -48,9 +48,9 @@ $result = mysqli_query( $connect, $query );
       <td align="center"><?php echo $record['description']; ?></td>
       <td align="center"><?php echo $record['startdate']; ?></td>
       <td align="center"><?php echo $record['enddate']; ?></td>
-      <td align="center"><a href="education_edit.php?id=<?php echo $record['id']; ?>">Edit</i></a></td>
+      <td align="center"><a href="education_edit.php?id=<?php echo $record['id']; ?>"><i class="fa-solid fa-pencil"></i>Edit</a></td>
       <td align="center">
-        <a href="education.php?delete=<?php echo $record['id']; ?>" onclick="javascript:confirm('Are you sure you want to delete this education?');">Delete</i></a>
+        <a href="education.php?delete=<?php echo $record['id']; ?>" onclick="javascript:confirm('Are you sure you want to delete this education?');"><i class="fa-solid fa-trash"></i>Delete</a>
       </td>
     </tr>
   <?php endwhile; ?>

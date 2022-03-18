@@ -9,6 +9,7 @@
   
   <link href="styles.css" type="text/css" rel="stylesheet">
   
+  <script src="https://kit.fontawesome.com/3fd7ea09a2.js" crossorigin="anonymous"></script>
   <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
   
 </head>

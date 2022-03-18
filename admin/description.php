@@ -47,10 +47,10 @@ $result = mysqli_query( $connect, $query );
       <td align="center"><?php echo $record['id']; ?></td>
       <td align="center"><?php echo $record['title']; ?></td>
       <td align="center"><?php echo $record['description']; ?></td>
-      <td align="center"><a href="skills_photo.php?id=<?php echo $record['id']; ?>">Photo</i></a></td>
-      <td align="center"><a href="description_edit.php?id=<?php echo $record['id']; ?>">Edit</i></a></td>
+      <td align="center"><a href="skills_photo.php?id=<?php echo $record['id']; ?>"><i class="fa-solid fa-camera"></i>Photo</a></td>
+      <td align="center"><a href="description_edit.php?id=<?php echo $record['id']; ?>"><i class="fa-solid fa-pencil"></i>Edit</a></td>
       <td align="center">
-        <a href="description.php?delete=<?php echo $record['id']; ?>" onclick="javascript:confirm('Are you sure you want to delete this description?');">Delete</i></a>
+        <a href="description.php?delete=<?php echo $record['id']; ?>" onclick="javascript:confirm('Are you sure you want to delete this description?');"><i class="fa-solid fa-trash"></i>Delete</a>
       </td>
     </tr>
   <?php endwhile; ?>
